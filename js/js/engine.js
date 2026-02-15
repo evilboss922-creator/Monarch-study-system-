@@ -64,3 +64,5 @@ window.completeTask = function () {
   xp += 10;
   alert("🔥 Task Completed! +10 XP\nTotal XP: " + xp);
 };
+document.getElementById("alarmBtn").addEventListener("click", setAlarm);
+document.getElementById("completeBtn").addEventListener("click", completeTask);
