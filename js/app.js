@@ -1,47 +1,28 @@
-import { auth } from "./firebase.js";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+function register() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-// REGISTER FUNCTION
-window.register = function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    if (email === "" || password === "") {
+        document.getElementById("message").innerText = "Please fill all fields!";
+        return;
+    }
 
-  if (!email || !password) {
-    document.getElementById("message").innerText = "Please fill all fields";
-    return;
-  }
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      document.getElementById("message").innerText = "👑 Registered Successfully!";
-    })
-    .catch(error => {
-      document.getElementById("message").innerText = error.message;
-    });
-};
+    document.getElementById("message").innerText = "Registered Successfully!";
+}
 
-// LOGIN FUNCTION
-window.login = function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  if (!email || !password) {
-    document.getElementById("message").innerText = "Please fill all fields";
-    return;
-  }
+    const savedEmail = localStorage.getItem("userEmail");
+    const savedPassword = localStorage.getItem("userPassword");
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      document.getElementById("message").innerText = "🔥 Welcome to Monarch!";
-    })
-    .catch(error => {
-      document.getElementById("message").innerText = error.message;
-    });
-};
-document.getElementById("registerBtn").addEventListener("click", register);
-document.getElementById("loginBtn").addEventListener("click", login);
-window.register = register;
-window.login = login;
+    if (email === savedEmail && password === savedPassword) {
+        document.getElementById("message").innerText = "Login Successful!";
+    } else {
+        document.getElementById("message").innerText = "Invalid Email or Password!";
+    }
+}
