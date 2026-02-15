@@ -66,3 +66,5 @@ window.completeTask = function () {
 };
 document.getElementById("alarmBtn").addEventListener("click", setAlarm);
 document.getElementById("completeBtn").addEventListener("click", completeTask);
+window.setAlarm = setAlarm;
+window.completeTask = completeTask;
