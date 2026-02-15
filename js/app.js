@@ -41,3 +41,5 @@ window.login = function () {
       document.getElementById("message").innerText = error.message;
     });
 };
+document.getElementById("registerBtn").addEventListener("click", register);
+document.getElementById("loginBtn").addEventListener("click", login);
