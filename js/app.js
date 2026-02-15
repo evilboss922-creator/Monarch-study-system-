@@ -43,3 +43,5 @@ window.login = function () {
 };
 document.getElementById("registerBtn").addEventListener("click", register);
 document.getElementById("loginBtn").addEventListener("click", login);
+window.register = register;
+window.login = login;
